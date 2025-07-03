@@ -4,3 +4,6 @@ autocmd BufWritePost * silent! execute '!cmd /c "pushd ' . expand('%:p:h') . ' >
 " Enable paste only when pressing Shift+I
 nnoremap I :set paste<CR>I
 autocmd InsertLeave * set nopaste
+
+" Enable working backspace in insert mode
+set backspace=indent,eol,start
