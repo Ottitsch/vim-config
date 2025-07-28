@@ -10,3 +10,22 @@ autocmd InsertLeave * set nopaste
 
 " Enable working backspace in insert mode
 set backspace=indent,eol,start
+
+" Make Shift+Tab insert 4 Space in both insert and insert paste mode
+set pastetoggle=<S-Tab>
+inoremap <S-Tab> <Space><Space><Space><Space>
+
+augroup PasteTabSpaces
+  autocmd!
+  autocmd OptionSet paste call PasteTabHandler(v:option_new, v:option_old)
+augroup END
+
+function! PasteTabHandler(new, old) abort
+  " only act when weΓÇÖve just gone from paste=1 ΓåÆ paste=0
+  if a:new == 0 && a:old == 1
+    " insert four spaces
+    call feedkeys("    ", 'n')
+    " turn paste back on
+    set paste
+  endif
+endfunction
