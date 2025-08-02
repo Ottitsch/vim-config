@@ -29,3 +29,10 @@ function! PasteTabHandler(new, old) abort
     set paste
   endif
 endfunction
+
+" Normal mode: copy entire file
+nnoremap <C-c> gg"+yG
+
+" Visual mode: copy selection
+vnoremap <C-c> "+y
+
