@@ -36,3 +36,11 @@ nnoremap <C-c> gg"+yG
 " Visual mode: copy selection
 vnoremap <C-c> "+y
 
+" Function: delete 4 chars backward
+function! DeleteFourChars()
+  return repeat("\<BS>", 4)
+endfunction
+
+" Map Shift+Backspace in insert mode
+inoremap <expr> <S-BS> DeleteFourChars()
+
